@@ -1,16 +1,18 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using MachovdasBot.ConsoleApp.Commands;
+using System.Configuration;
 
 namespace MachovdasBot.ConsoleApp
 {
     public class Program
     {
         private static DiscordSocketClient _client;
-        private static readonly ulong _guildID = 514399873710161921;
+        private static readonly ulong _guildID = ulong.Parse(ConfigurationManager.AppSettings["guildId"]);
 
-        public async Task Main()
+        public static async Task Main()
         {
+
             _client = new DiscordSocketClient();
 
             _client.Log += Log;
@@ -30,7 +32,7 @@ namespace MachovdasBot.ConsoleApp
             return Task.CompletedTask;
         }
 
-        private async Task ClientReady()
+        private static async Task ClientReady()
         {
             _client.SlashCommandExecuted += CommandHandler.SlashCommandHandler;
 

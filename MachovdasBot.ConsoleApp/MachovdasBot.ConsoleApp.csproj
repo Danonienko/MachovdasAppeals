@@ -9,8 +9,15 @@
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.14.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties appconfig_1json__JsonSchema="config" /></VisualStudio></ProjectExtensions>
+  <ItemGroup>
+    <None Update="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
