@@ -9,8 +9,6 @@ namespace MachovdasBot.ConsoleApp.Commands
     {
         public static async Task Initialize(DiscordSocketClient client, ulong guildId)
         {
-            var guild = client.GetGuild(guildId);
-
             var command = new SlashCommandBuilder()
                 .WithName("echo")
                 .WithDescription("Echoes back provided text")

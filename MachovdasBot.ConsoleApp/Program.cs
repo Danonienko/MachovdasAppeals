@@ -9,7 +9,7 @@ namespace MachovdasBot.ConsoleApp
         private static DiscordSocketClient _client;
         private static readonly ulong _guildID = 514399873710161921;
 
-        public static async Task Main()
+        public async Task Main()
         {
             _client = new DiscordSocketClient();
 
@@ -30,7 +30,7 @@ namespace MachovdasBot.ConsoleApp
             return Task.CompletedTask;
         }
 
-        private static async Task ClientReady()
+        private async Task ClientReady()
         {
             _client.SlashCommandExecuted += CommandHandler.SlashCommandHandler;
 
