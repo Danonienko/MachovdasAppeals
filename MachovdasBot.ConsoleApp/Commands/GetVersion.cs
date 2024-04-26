@@ -5,17 +5,19 @@ using Newtonsoft.Json;
 
 namespace MachovdasBot.ConsoleApp.Commands
 {
-    public class GetVersion()
+    public class GetVersion
     {
-        public static async Task Initialize(DiscordSocketClient client)
+        public static async Task Initialize(DiscordSocketClient client, ulong guildId)
         {
-            var globalCommand = new SlashCommandBuilder()
+            var guild = client.GetGuild(guildId);
+
+            var command = new SlashCommandBuilder()
                 .WithName("get-version")
-                .WithDescription("Gets the current version of the bot.");
+                .WithDescription("Get current version of the application");
 
             try
             {
-                await client.CreateGlobalApplicationCommandAsync(globalCommand.Build());
+                await guild.CreateApplicationCommandAsync(command.Build());
             }
             catch (HttpException ex)
             {
@@ -24,12 +26,12 @@ namespace MachovdasBot.ConsoleApp.Commands
                 Console.WriteLine(json);
             }
 
-            client.SlashCommandExecuted += SlashCommandHandler;
+            Console.WriteLine("GUILD get-version command initialized successfully");
         }
 
-        private static async Task SlashCommandHandler(SocketSlashCommand command)
+        public static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync($"Machovdas Bot Version 1.0");
+            await command.RespondAsync("Machovdas Appeals Application Version 1.0");
         }
     }
 }
