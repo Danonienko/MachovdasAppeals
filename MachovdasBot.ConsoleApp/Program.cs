@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using MachovdasBot.ConsoleApp.Commands;
 
 namespace MachovdasBot.ConsoleApp
 {
@@ -16,6 +17,8 @@ namespace MachovdasBot.ConsoleApp
             await _client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("botToken", EnvironmentVariableTarget.User));
             await _client.StartAsync();
 
+            _client.Ready += ClientReady;
+
             await Task.Delay(-1);
         }
 
@@ -23,6 +26,13 @@ namespace MachovdasBot.ConsoleApp
         {
             Console.WriteLine(message.ToString());
             return Task.CompletedTask;
+        }
+
+        private static async Task ClientReady()
+        {
+            GetVersion versionCommand = new();
+
+            await versionCommand.Initialize(_client);
         }
     }
 }
