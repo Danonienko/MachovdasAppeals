@@ -30,9 +30,9 @@ namespace MachovdasBot.ConsoleApp
 
         private static async Task ClientReady()
         {
-            GetVersion versionCommand = new();
-
-            await versionCommand.Initialize(_client);
+            await GetVersion.Initialize(_client);
+            await Echo.Initialize(_client);
+            await Disconnect.Initialize(_client);
         }
     }
 }

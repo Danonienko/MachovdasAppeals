@@ -5,13 +5,14 @@ using Newtonsoft.Json;
 
 namespace MachovdasBot.ConsoleApp.Commands
 {
-    public class GetVersion()
+    public class Echo
     {
         public static async Task Initialize(DiscordSocketClient client)
         {
             var globalCommand = new SlashCommandBuilder()
-                .WithName("get-version")
-                .WithDescription("Gets the current version of the bot.");
+                .WithName("echo")
+                .WithDescription("Echo a text")
+                .AddOption("string", ApplicationCommandOptionType.String, "A text to echo");
 
             try
             {
@@ -24,12 +25,12 @@ namespace MachovdasBot.ConsoleApp.Commands
                 Console.WriteLine(json);
             }
 
-            client.SlashCommandExecuted += SlashCommandHandler;
+            client.SlashCommandExecuted += Response;
         }
 
-        private static async Task SlashCommandHandler(SocketSlashCommand command)
+        private static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync($"Machovdas Bot Version 1.0");
+            await command.RespondAsync($"{command.Data.Options.First().Value}");
         }
     }
 }
