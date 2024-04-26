@@ -87,7 +87,15 @@ namespace MachovdasBot.ConsoleApp
                 await command.DeleteAsync();
             }
 
-            await GetVersion.Initialize(_client, _guildID);
+            try
+            {
+                await GetVersion.Initialize(_client, _guildID);
+                await Echo.Initialize(_client, _guildID);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

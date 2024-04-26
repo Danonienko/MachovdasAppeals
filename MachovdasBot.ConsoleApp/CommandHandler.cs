@@ -12,6 +12,10 @@ namespace MachovdasBot.ConsoleApp
                 case "get-version":
                     await GetVersion.Response(command);
                     break;
+
+                case "echo":
+                    await Echo.Response(command);
+                    break;
             }
         }
     }
