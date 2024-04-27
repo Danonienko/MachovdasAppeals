@@ -77,22 +77,22 @@ namespace MachovdasBot.ConsoleApp
             var globalCommands = await _client.GetGlobalApplicationCommandsAsync();
             var guildCommands = await _client.Rest.GetGuildApplicationCommands(_guildID);
 
+            int count = 1;
             Console.WriteLine("\nDeleting commands...\n");
             foreach (var command in globalCommands)
             {
-                int count = 0;
                 int amount = globalCommands.Count;
 
-                Console.WriteLine($"DELETED GLOBAL COMMAND {command.Name} ({count + 1}/{amount})");
+                Console.WriteLine($"GLOBAL command `{command.Name}` DELETED ({count++}/{amount})");
                 await command.DeleteAsync();
             }
 
+            count = 1;
             foreach (var command in guildCommands)
             {
-                int count = 0;
                 int amount = guildCommands.Count;
 
-                Console.WriteLine($"DELETED GUILD COMMAND {command.Name} ({count + 1}/{amount})");
+                Console.WriteLine($"GUILD command `{command.Name}` DELETED ({count++}/{amount})");
                 await command.DeleteAsync();
             }
 

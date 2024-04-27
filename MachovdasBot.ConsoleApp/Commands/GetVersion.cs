@@ -13,7 +13,7 @@ namespace MachovdasBot.ConsoleApp.Commands
 
             var command = new SlashCommandBuilder()
                 .WithName("get-version")
-                .WithDescription("Get current version of the application");
+                .WithDescription("Get current version of the bot");
 
             try
             {
@@ -31,7 +31,7 @@ namespace MachovdasBot.ConsoleApp.Commands
 
         public static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync("Machovdas Appeals Application Version 1.0");
+            await command.RespondAsync("Machovdas Appeals Bot Version 1.0");
         }
     }
 }
