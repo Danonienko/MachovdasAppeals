@@ -25,7 +25,7 @@ namespace MachovdasBot.ConsoleApp.Commands
                 Console.WriteLine(json);
             }
 
-            Console.WriteLine("GUILD echo command initialized successfully");
+            Console.WriteLine("GUILD command `echo` initialized successfully");
         }
 
         public static async Task Response(SocketSlashCommand command)

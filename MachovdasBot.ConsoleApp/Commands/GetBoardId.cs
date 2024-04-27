@@ -2,18 +2,24 @@
 using Discord.Net;
 using Discord.WebSocket;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MachovdasBot.ConsoleApp.Commands
 {
-    public class GetVersion
+    public class GetBoardId
     {
         public static async Task Initialize(DiscordSocketClient client, ulong guildId)
         {
             var guild = client.GetGuild(guildId);
 
             var command = new SlashCommandBuilder()
-                .WithName("get-version")
-                .WithDescription("Get current version of the application");
+                .WithName("get-board-id")
+                .WithDescription("Retrieves the Trello board ID a bot is currently connected to");
 
             try
             {
@@ -26,12 +32,13 @@ namespace MachovdasBot.ConsoleApp.Commands
                 Console.WriteLine(json);
             }
 
-            Console.WriteLine("GUILD command `get-version` initialized successfully");
+            Console.WriteLine("GUILD command `get-board-id` initialized successfully");
         }
 
         public static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync("Machovdas Appeals Application Version 1.0");
+            await command.RespondAsync($"Trello Board ID: {ConfigurationManager.AppSettings["boardID"]}");
         }
+
     }
 }

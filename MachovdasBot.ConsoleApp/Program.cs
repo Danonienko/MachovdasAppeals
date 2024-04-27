@@ -8,7 +8,7 @@ namespace MachovdasBot.ConsoleApp
     public class Program
     {
         private static DiscordSocketClient _client;
-        private static readonly ulong _guildID = ulong.Parse(ConfigurationManager.AppSettings["guildId"]);
+        private static readonly ulong _guildID = ulong.Parse(ConfigurationManager.AppSettings["guildID"]);
 
         public static async Task Main()
         {
@@ -38,7 +38,7 @@ namespace MachovdasBot.ConsoleApp
 
             Console.WriteLine("\nConsole ready to use. Available commands:");
             GetHelp();
-            ConsoleInput();
+            await ConsoleInput();
         }
         private static void GetHelp()
         {
@@ -55,19 +55,19 @@ namespace MachovdasBot.ConsoleApp
                 case "help":
                     GetHelp();
 
-                    ConsoleInput();
+                    await ConsoleInput();
                     break;
 
                 case "flush":
                     await Flush();
 
-                    ConsoleInput();
+                    await ConsoleInput();
                     break;
 
                 default:
                     Console.WriteLine("Invalid Console Command");
 
-                    ConsoleInput();
+                    await ConsoleInput();
                     break;
             }
         }
@@ -77,27 +77,38 @@ namespace MachovdasBot.ConsoleApp
             var globalCommands = await _client.GetGlobalApplicationCommandsAsync();
             var guildCommands = await _client.Rest.GetGuildApplicationCommands(_guildID);
 
+            Console.WriteLine("\nDeleting commands...\n");
             foreach (var command in globalCommands)
             {
-                Console.WriteLine($"DELETED GLOBAL COMMAND {command.Name}");
+                int count = 0;
+                int amount = globalCommands.Count;
+
+                Console.WriteLine($"DELETED GLOBAL COMMAND {command.Name} ({count + 1}/{amount})");
                 await command.DeleteAsync();
             }
 
             foreach (var command in guildCommands)
             {
-                Console.WriteLine($"DELETED GUILD COMMAND {command.Name}");
+                int count = 0;
+                int amount = guildCommands.Count;
+
+                Console.WriteLine($"DELETED GUILD COMMAND {command.Name} ({count + 1}/{amount})");
                 await command.DeleteAsync();
             }
 
+            Console.WriteLine("\nInitializing new commands...\n");
             try
             {
                 await GetVersion.Initialize(_client, _guildID);
                 await Echo.Initialize(_client, _guildID);
+                await GetBoardId.Initialize(_client, _guildID);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
+
+            Console.WriteLine("\nConsole ready");
         }
     }
 }

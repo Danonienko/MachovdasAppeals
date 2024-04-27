@@ -16,6 +16,10 @@ namespace MachovdasBot.ConsoleApp
                 case "echo":
                     await Echo.Response(command);
                     break;
+
+                case "get-board-id":
+                    await GetBoardId.Response(command);
+                    break;
             }
         }
     }
