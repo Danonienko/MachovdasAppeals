@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachovdasBot.ConsoleApp", "MachovdasBot.ConsoleApp\MachovdasBot.ConsoleApp.csproj", "{AC2CA77D-D56A-4740-A1BC-B2538F94F3F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachovdasBot.ConsoleAppTests", "MachovdasBot.ConsoleAppTests\MachovdasBot.ConsoleAppTests.csproj", "{BD5C4E27-4766-4B5A-B88A-55789FCCF36D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AC2CA77D-D56A-4740-A1BC-B2538F94F3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC2CA77D-D56A-4740-A1BC-B2538F94F3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC2CA77D-D56A-4740-A1BC-B2538F94F3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5C4E27-4766-4B5A-B88A-55789FCCF36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5C4E27-4766-4B5A-B88A-55789FCCF36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5C4E27-4766-4B5A-B88A-55789FCCF36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5C4E27-4766-4B5A-B88A-55789FCCF36D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

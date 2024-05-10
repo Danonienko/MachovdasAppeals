@@ -1,9 +1,4 @@
-﻿using Discord;
-using Discord.Net;
-using Discord.WebSocket;
-using Newtonsoft.Json;
-
-namespace MachovdasBot.ConsoleApp.Commands
+﻿namespace MachovdasBot.ConsoleApp.Commands
 {
     public class Echo
     {

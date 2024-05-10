@@ -1,5 +1,4 @@
-﻿using Discord.WebSocket;
-using MachovdasBot.ConsoleApp.Commands;
+﻿using MachovdasBot.ConsoleApp.Commands;
 
 namespace MachovdasBot.ConsoleApp
 {
@@ -17,8 +16,12 @@ namespace MachovdasBot.ConsoleApp
                     await Echo.Response(command);
                     break;
 
-                case "get-board-id":
+                case "get-boards-id":
                     await GetBoardId.Response(command);
+                    break;
+
+                case "new-watch":
+                    await NewWatch.Response(command);
                     break;
             }
         }

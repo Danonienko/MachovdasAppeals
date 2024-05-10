@@ -1,13 +1,4 @@
-﻿using Discord;
-using Discord.Net;
-using Discord.WebSocket;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace MachovdasBot.ConsoleApp.Commands
 {
@@ -18,8 +9,8 @@ namespace MachovdasBot.ConsoleApp.Commands
             var guild = client.GetGuild(guildId);
 
             var command = new SlashCommandBuilder()
-                .WithName("get-board-id")
-                .WithDescription("Retrieves the Trello board ID a bot is currently connected to");
+                .WithName("get-boards-id")
+                .WithDescription("Retrieves the ID of Trello boards the bot is currently connected to");
 
             try
             {
@@ -37,8 +28,9 @@ namespace MachovdasBot.ConsoleApp.Commands
 
         public static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync($"Trello Board ID: {ConfigurationManager.AppSettings["boardID"]}");
+            await command.RespondAsync($"Testing Board: [CLASSIFIED]" +
+                $"\nWatchlist board: {ConfigurationManager.AppSettings["watchlistBoardID"]}" +
+                $"\nAppeal Cooldowns board: {ConfigurationManager.AppSettings["appealCooldownBoardID"]}");
         }
-
     }
 }

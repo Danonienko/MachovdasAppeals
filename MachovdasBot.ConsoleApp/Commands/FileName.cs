@@ -1,14 +1,20 @@
-﻿namespace MachovdasBot.ConsoleApp.Commands
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MachovdasBot.ConsoleApp.Commands
 {
-    public class GetVersion
+    public class FileName
     {
         public static async Task Initialize(DiscordSocketClient client, ulong guildId)
         {
             var guild = client.GetGuild(guildId);
 
             var command = new SlashCommandBuilder()
-                .WithName("get-version")
-                .WithDescription("Get current version of the bot");
+                .WithName("test-command")
+                .WithDescription("This is description");
 
             try
             {
@@ -21,12 +27,12 @@
                 Console.WriteLine(json);
             }
 
-            Console.WriteLine("GUILD command `get-version` initialized successfully");
+            Console.WriteLine("GUILD command `test-command` initialized successfully");
         }
 
         public static async Task Response(SocketSlashCommand command)
         {
-            await command.RespondAsync("Machovdas Appeals Bot Version 1.0");
+
         }
     }
 }
